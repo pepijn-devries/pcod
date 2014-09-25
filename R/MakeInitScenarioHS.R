@@ -88,7 +88,7 @@ b <- 0
   if(sum(vulnmean)== 1){newvulnmean <- newvulnmean} else {newvulnmean[nvulnmean+1] <- 1 - sum(newvulnmean)}
 
 # SET pile_years TO ZERO IF THERE IS NO PILING
-pile_years <- 1
+# pile_years <- 1
 
 if (pile_years > 0) {
 
@@ -168,11 +168,11 @@ daily_NPt <- daily_NDt <- matrix(0, nrow = seasons, ncol = npiles)
 # for piling operation 1, the next (inputindex+1):(2*inputindex) values give the number of animals
 #  that will be affected in each season for piling operation 2, and so on
 
-daily_NDt[1:inputindex,] <- c(60, 60, 60)
+daily_NDt[1:inputindex,] <- numDT
 
 # now do the same for the number of animals predicted to experience PTS on one day of piling
 
-daily_NPt[1:inputindex,] <- c(2, 2, 2)
+daily_NPt[1:inputindex,] <- numPT
 
 
 if (inputindex == 2) {
@@ -211,14 +211,14 @@ for(i in 1:nrow(vulnpile)){
 
 # input number of days of "residual" disturbance. DEFAULT IS 1
 
-days <- 1
+# days <- 1
 
 # iPCoD PROTOCOL STEP 8
 
 # decide if PTS can occur on any day (default) or only on the first occasion that an individual is disturbed by 
 # change Day1 to TRUE if you want animals to be only vulnerable to PTS on the first day they are disturbed
 
-Day1 = TRUE # Flag for the different PTS model 
+# Day1 = TRUE # Flag for the different PTS model 
 
 }
 
@@ -227,12 +227,12 @@ Day1 = TRUE # Flag for the different PTS model
 # input number of animals predicted to be killed each year as a result of collisions with tidal energy arrays
 
 
-NCollisions <- 0
+# NCollisions <- 0
 
 NCollisions <- NCollisions*propfemale                                                             
 
 
 #number of years for simulation
-years <- 25
+# years <- 25
 
 
