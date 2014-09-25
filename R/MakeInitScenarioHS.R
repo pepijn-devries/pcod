@@ -14,7 +14,7 @@ threshold <- 500
 
 # iPCoD PROTOCOL STEP 2
 
-pmean <- 4568 # population size value from the IAMMAWG MU report should be used for the MU being modelled
+# pmean <- 4568 # population size value from the IAMMAWG MU report should be used for the MU being modelled
 pmean <- round(pmean*propfemale)
 
 
@@ -27,8 +27,7 @@ Surv <- rep(0, 18)
 # iPCoD PROTOCOL STEP 2
 # INPUT DEMOGRAPHIC RATES FROM HARWOOD & KING (2014) HERE
 
-  Surv[c(1, 7, 13)] <- c(0.6, 0.82, 0.85)
-  Fertility <- 0.95
+  Surv[c(1, 7, 13)] <- c(pupSurv, juvSurv, adSurv)
 
 # age1 = age at which a calf becomes independent from its mother, default is 1 
   age1 <- 1
@@ -81,7 +80,7 @@ b <- 0
 
 # INPUT PROPORTIONS OF POPULATION IN VULNERABLE SUB-POPULATIONS (DEFAULT: entire population in one sub-population)
  
-  vulnmean <- c(1.0) 
+#   vulnmean <- c(1.0) 
 
   nvulnmean <- length(vulnmean)
 # newvulnmean includes proportion of animals in undisturbed remainder of population, if there is one!

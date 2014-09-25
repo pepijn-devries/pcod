@@ -4,9 +4,9 @@ rm(list = ls())
 # Set the name of the MakeInit file you want to use
 
 source('PCoDFunctionsFinal.r')
-source('MakeInitScenarioHS_Concurrent.r')
-# Set the number of times you want to run the simulation 
-nboot <- 500
+source('config.r')
+source('MakeInitScenarioHS.r')
+
 
 # matrix to store values that will be retained from all simulations, now extended to 5 values from original 4
   dat.out <- array(NA, dim = c(years, 5, nboot)) 
