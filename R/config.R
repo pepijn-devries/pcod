@@ -19,3 +19,5 @@
 # Vulnerable population
 
 # Residual Days of Disturbance
+
+# proportion vulnerable - Allowing a subset of disturbed animals to experience residual disturbance
