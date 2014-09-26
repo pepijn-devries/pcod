@@ -6,7 +6,7 @@ rm(list = ls())
 source('PCoDFunctionsFinal.R')
 source('config.R')
 source('MakeInitScenarioHS.R')
-source('makeElicitData.R')
+# source('makeElicitData.R')
 
 
 # matrix to store values that will be retained from all simulations, now extended to 5 values from original 4
