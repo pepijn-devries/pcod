@@ -36,14 +36,14 @@ f.experts.survival_and_fertility <- function(spec){
 # dd2 contains the equivalent values for juveniles, 
 # dd1 contains the equivalent values for dependents (pups or calves)
  
-  dd3 <- matureDays[sample(nrow(matureDays), 1), ] # samples rows at random
+  dd3 <- maturedays[sample(nrow(maturedays), 1), ] # samples rows at random
   dd3[1]<-1
   dd3[2:3] <- round(dd3[2:3], 0)
   disturb_post3 <- stickEvals(0:365, dd3[c(2, 3, 1)])
   
   if (spec == 'MW') {
     dd2 <- c(1,365,365) } else  {# samples rows at random 
-      dd2 <- juveDays[sample(nrow(juveDays), 1), ] 
+      dd2 <- juvedays[sample(nrow(juvedays), 1), ] 
       }  
       
   dd2[2:3] <- round(dd2[2:3], 0)
@@ -51,7 +51,7 @@ f.experts.survival_and_fertility <- function(spec){
     
   if (spec == 'GS'| spec == 'MW')  {
     dd1 <- dd2  } else {
-    dd1 <- dependentDays[sample(nrow(dependentDays), 1), ] 
+    dd1 <- dependentdays[sample(nrow(dependentdays), 1), ] 
     } # samples rows at random   
   
   dd1[2:3] <- round(dd1[2:3], 0)
