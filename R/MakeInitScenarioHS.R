@@ -1,7 +1,15 @@
-spec <- 'HS'
+# spec <- 'HS'
 propfemale <- 0.5
 
-                 
+# Load in the appropriate values from the results of the expert elicitation
+maturedays <- hsmaturedays
+juvedays <- hsjuvedays 
+dependentdays <- hsdependentdays
+output_mature <- hsoutput_mature
+output_juvenile <- hsoutput_juvenile
+output_dependent <- hsoutput_dependent
+
+
 # set threshold value of total population size for inclusion of demographic stochasticity
 threshold <- 500
 
