@@ -1,0 +1,9 @@
+Package: pcod
+Title: A Package to Run the Interim PCOD Code
+Version: 0.1
+Authors@R: "Robert Schick <rss5@st-andrews.ac.uk> [aut, cre]"
+Description: THis is all the code & data needed to run the interim PCOD code
+Depends:
+    R (>= 3.1.1)
+License: CCO
+LazyData: true
