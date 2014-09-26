@@ -1,18 +1,18 @@
 # make the outputs from the elicitation into a proper .rda object
 rm(list = ls())
 load("../data-raw/HS_mature_Days.robj")
-hsMaturedays <- temp
-save(hsMaturedays, file = '../data/hsMaturedays.rda')
+hsmaturedays <- temp
+save(hsmaturedays, file = '../data/hsMaturedays.rda')
 
 rm(list = ls())
 load("../data-raw/HSjuve_Days.robj") 
-hsJuvedays <- temp
-save(hsJuvedays, file = '../data/hsJuvedays.rda')
+hsjuvedays <- temp
+save(hsjuvedays, file = '../data/hsJuvedays.rda')
 
 rm(list = ls())
 load("../data-raw/HSdependent_Days.robj") 
-hsDependentdays <- temp
-save(hsDependentdays, file = '../data/hsDependentdays.rda')
+hsdependentdays <- temp
+save(hsdependentdays, file = '../data/hsDependentdays.rda')
 
 
 rm(list = ls())
