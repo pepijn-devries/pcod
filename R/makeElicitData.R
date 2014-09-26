@@ -1,7 +1,31 @@
 # make the outputs from the elicitation into a proper .rda object
-load("../data/HS_mature_Days.robj"); matureDays <- temp
-load("../data/output_matureHS_290113.robj")
-load("../data/HSjuve_Days.robj"); juveDays <- temp              
-load("../data/HSdependent_Days.robj"); dependentDays <- temp    
-load("../data/output_juvenileHS_290113.robj")                   
-load("../data/output_dependentHS_290113.robj") 
+rm(list = ls())
+load("../data-raw/HS_mature_Days.robj")
+hsMaturedays <- temp
+save(hsMaturedays, file = '../data/hsMaturedays.rda')
+
+rm(list = ls())
+load("../data-raw/HSjuve_Days.robj") 
+hsJuvedays <- temp
+save(hsJuvedays, file = '../data/hsJuvedays.rda')
+
+rm(list = ls())
+load("../data-raw/HSdependent_Days.robj") 
+hsDependentdays <- temp
+save(hsDependentdays, file = '../data/hsDependentdays.rda')
+
+
+rm(list = ls())
+load("../data-raw/output_matureHS_290113.robj")
+hsoutput_mature <- output_HarbourSeal_mature
+save(hsoutput_mature, file = '../data/output_HarbourSeal_mature.rda')
+
+rm(list = ls())
+load("../data-raw/output_juvenileHS_290113.robj")                   
+hsoutput_juvenile <- output_HarbourSeal_juvenile
+save(hsoutput_juvenile, file = '../data/output_HarbourSeal_juvenile.rda')
+
+rm(list = ls())
+load("../data-raw/output_dependentHS_290113.robj") 
+hsoutput_dependent <- output_HarbourSeal_dependent
+save(hsoutput_dependent, file = '../data/output_HarbourSeal_dependent.rda')
