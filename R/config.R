@@ -2,6 +2,9 @@
 # in one location. This will be sourced first during the run
 # and parameters will be updated from these inputs
 
+# Species
+spec <- 'HS'
+spec <- tolower(spec)
 # Management Unit
 
 # Population Size - value from the IAMMAWG MU report should be used for the MU being modelled
