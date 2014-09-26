@@ -6,6 +6,7 @@ rm(list = ls())
 source('PCoDFunctionsFinal.R')
 source('config.R')
 source('MakeInitScenarioHS.R')
+source('makeElicitData.R')
 
 
 # matrix to store values that will be retained from all simulations, now extended to 5 values from original 4
@@ -21,8 +22,8 @@ source('MakeInitScenarioHS.R')
   Ndist_out_1 <- Ndist_out_2 <- array(0, dim = c(10, 7, pile_years))
   colnames(Ndist_out_1) <- colnames(Ndist_out_2) <- c('age', 'not disturbed','mod dist', 'severe dist', 'PTS only','PTS+mod dist','PTS+severe dist')
 
-  for(boot_number in 1:nboot){  
-
+#   for(boot_number in 1:nboot){  
+    boot_number  <-  1
   Ndist <- matrix(0, nrow = 60, ncol = years)  
   Nnotdist <- matrix(0, nrow = 10, ncol = years)
   NColl_byage <- rep(0,60)
