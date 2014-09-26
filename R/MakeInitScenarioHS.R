@@ -3,12 +3,12 @@ propfemale <- 0.5
 
 # Load in the appropriate values from the results of the expert elicitation
 # link to text B
-load("HS_mature_Days.robj"); matureDays <- temp
-load("output_matureHS_290113.robj")
-load("HSjuve_Days.robj"); juveDays <- temp              
-load("HSdependent_Days.robj"); dependentDays <- temp    
-load("output_juvenileHS_290113.robj")                   
-load("output_dependentHS_290113.robj")                  
+load("../data/HS_mature_Days.robj"); matureDays <- temp
+load("../data/output_matureHS_290113.robj")
+load("../data/HSjuve_Days.robj"); juveDays <- temp              
+load("../data/HSdependent_Days.robj"); dependentDays <- temp    
+load("../data/output_juvenileHS_290113.robj")                   
+load("../data/output_dependentHS_290113.robj")                  
 # set threshold value of total population size for inclusion of demographic stochasticity
 threshold <- 500
 
@@ -96,7 +96,7 @@ if (pile_years > 0) {
 
 # read csv file with schedule of piling activities. YOU MAY NEED TO CHANGE THE FILE NAME HERE
 
-pile <- read.csv(file = 'MultPilingOpsMultYears.csv', header = TRUE) ## XXX strip out date column
+pile <- read.csv(file = '../data/MultPilingOpsMultYears.csv', header = TRUE) ## XXX strip out date column
 
 # removes day labels from first column of csv file
 widx <- which(colnames(pile) %in% c('Date', 'DayOfYear'))
@@ -106,6 +106,7 @@ library(stringr)
 yvec   <- str_match(colnames(pile), 'Operation')
 npiles <- length(yvec[!is.na(yvec)])
 pilesx <- which(str_match(colnames(pile), 'Operation') %in% 'Operation')
+pile  <- pile[, pilesx]
 
 # template for  MultPilingOpsMultYears.csv should ensure that number of rows is an exact multiple of 365
 pile_years <- nrow(pile) / 365 
@@ -116,8 +117,7 @@ yearvec <- rep(1:pile_years, each = 365)
 # iPCoD PROTOCOL STEP 5
 
 # input number of piling operations to be modelled (3 in this case)
-
-pilesx1 <- 3
+# pilesx1 <- 3
 
 if(pilesx1 != ncol(pile)){stop('Number of Piling Operations do not match')}
 # vulnpile is a matrix indicating which columns of pile are to be combined to provide piling information for each vulnerable sub-population
