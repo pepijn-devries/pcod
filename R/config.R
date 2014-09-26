@@ -28,6 +28,9 @@ vulnmean <- c(1.0)
 # Number of piling years - default is 1. Set to 0 if no piling.
 pile_years <- 1
 
+# Input the number of piling operations to be modelled
+pilesx1 <- 3
+
 # daily_NDt - stores estimates of the number of animals of the species being modelled that may experience disturbance
 # that is likley to impair an individual's ability to survive, breed, reproduce, or raise young, or that is likely to 
 # result in that individual being displaced from an area for a longer period than normal during one day for each operation
@@ -56,7 +59,7 @@ Day1 <- FALSE
 
 # Collisions - the number of animals predicted to be killed each year as a result of collisions with tidal
 # energy arrays
-Ncollisions <- 10
+NCollisions <- 10
 
 # years - the number of years for the simulation; default is 25
 years <- 25
