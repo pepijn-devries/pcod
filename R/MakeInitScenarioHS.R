@@ -2,6 +2,7 @@
 propfemale <- 0.5
 
 # Load in the appropriate values from the results of the expert elicitation
+library(pcodData)
 maturedays <- hsmaturedays
 juvedays <- hsjuvedays 
 dependentdays <- hsdependentdays
