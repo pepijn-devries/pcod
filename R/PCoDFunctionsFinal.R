@@ -169,6 +169,7 @@ f.disturbance_and_PTS <- function(pile, vuln, days, p_disturb, p_pts){
   
   dist_year      <- matrix(pile, vuln, 365, byrow = TRUE)
   pts_year       <- matrix(0, vuln, 365, byrow = TRUE)
+  
   dist_year1     <- apply(dist_year, 1, function(x){
     
     x       <- as.numeric(x)
@@ -183,19 +184,20 @@ f.disturbance_and_PTS <- function(pile, vuln, days, p_disturb, p_pts){
   
   dist_year2 <- apply(dist_year1, 1, function(x){
     x        <- as.numeric(x)
-    patrn    <- rep(1, days + 1)
+    patrn    <- rep(1, days + 1) 
     occur1   <- function(patrn, x) 
     { 
       m <- length(patrn) 
       n <- length(x) 
       candidate <- seq.int(length=n-m+1) 
       for (i in seq.int(length=m)) { 
-        candidate <- candidate[patrn[i] == x[candidate + i - 1]] 
+        candidate <- candidate[patrn[i] == x[candidate + i - 1]] # this could be a bug. I don't think we should we overwrite candidate...?
       } 
       candidate 
     } 
     
-    idx <- occur1(patrn, x) + 1
+    idx <- occur1(patrn, x) + 1; idx
+    idx <- occur1(patrn, x) + days; idx
     
     for(i in idx){
       if(days == 1){
