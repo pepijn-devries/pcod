@@ -10,6 +10,9 @@ spec <- tolower(spec)
 # Population Size - value from the IAMMAWG MU report should be used for the MU being modelled
 pmean  <- 4568
 
+# proportion of population that are females
+propfemale <- 0.5
+
 # Pup Survival Rate
 pupSurv <- 0.6
 
