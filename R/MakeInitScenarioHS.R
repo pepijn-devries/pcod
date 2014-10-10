@@ -10,34 +10,8 @@ output_mature <- hsoutput_mature
 output_juvenile <- hsoutput_juvenile
 output_dependent <- hsoutput_dependent
 
-
-# set threshold value of total population size for inclusion of demographic stochasticity
-threshold <- 500
-
-# iPCoD PROTOCOL STEP 2
-
-# pmean <- 4568 # population size value from the IAMMAWG MU report should be used for the MU being modelled
 pmean <- round(pmean*propfemale)
-
-
-
-
-
-
-Surv <- rep(0, 18)
-
-# iPCoD PROTOCOL STEP 2
-# INPUT DEMOGRAPHIC RATES FROM HARWOOD & KING (2014) HERE
-
-  Surv[c(1, 7, 13)] <- c(pupSurv, juvSurv, adSurv)
-
-# age1 = age at which a calf becomes independent from its mother, default is 1 
-  age1 <- 1
-
-# age2  = age at which a female give birth to her first calf
-  age2 <- 4
-
-  Fert <- rep(0, 6); Fert[1] <- Fertility/2.0
+Fert <- rep(0, 6); Fert[1] <- Fertility/2.0
 
 # determine initial stable age structure for population from Leslie matrix
 
@@ -95,10 +69,6 @@ b <- 0
 if (pile_years > 0) {
 
 # iPCoD PROTOCOL STEP 4
-
-# read csv file with schedule of piling activities. YOU MAY NEED TO CHANGE THE FILE NAME HERE
-
-pile <- read.csv(file = '../data/MultPilingOpsMultYears.csv', header = TRUE) ## XXX strip out date column
 
 # removes day labels from first column of csv file
 widx <- which(colnames(pile) %in% c('Date', 'DayOfYear'))

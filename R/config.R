@@ -2,77 +2,68 @@
 # in one location. This will be sourced first during the run
 # and parameters will be updated from these inputs
 
-# Species
+# set species code (BND = bottlenose dolphin, GS = grey seal, HP = harbour porpoise, HS = harbour seal, MW = minke whale)
 spec <- 'HS'
-spec <- tolower(spec)
-# Management Unit
-
-# Population Size - value from the IAMMAWG MU report should be used for the MU being modelled
-pmean  <- 4568
-
-# proportion of population that are females
-propfemale <- 0.5
-
-# Pup Survival Rate
-pupSurv <- 0.6
-
-# Juvenile Survival Rate
-juvSurv <- 0.82
-
-# Adult Survival Rate
-adSurv <- 0.85
-
-# Age at first birth
-
-# Fertility Rate
+# set threshold size for demographic stochasticity
+threshold <- 500
+# set population size
+pmean <- 4658
+Surv <- rep(0,18)
+# set calf/pup survival
+Surv[1] <- 0.6
+# set juvenile survival
+Surv[7] <- 0.82
+# set adult survival
+Surv[13] <- 0.85
+# set fecundity value
 Fertility <- 0.95
+# set age at which a calf or pup becomes independent of its mother
+age1 <- 1
+#set age at which an average female gives birth to her first calf
+age2 <- 4
+# input proportion of animals in each of the vulnerable sub-population(s), default is that the entire population is vulnerable
+vulnmean <- c(1)
 
-# Vulnerable population - input proportions of population in vulnerable sub-populations. Default is
-# entire population in one sub-population is vulnerable
-vulnmean <- c(1.0)
+nvulnmean <- length(vulnmean)
+newvulnmean <- vulnmean
+if(sum(vulnmean)== 1){newvulnmean <- newvulnmean} else {newvulnmean[nvulnmean+1] <- 1 - sum(newvulnmean)}
 
-# Number of piling years - default is 1. Set to 0 if no piling.
+# set number of years on which piling will occur. Set this to zero if there is no piling
 pile_years <- 1
+# specify name of csv file that contains information on days on which piling will occur between the quotation marks
+# read csv file with schedule of piling activities. 
+pile <- read.csv(file = '../data/MultPilingOpsMultYears.csv', header = TRUE) ## XXX strip out date column
+piling.file <- "../data/MultPilingOpsMultYears.csv"
 
-# Input the number of piling operations to be modelled
-pilesx1 <- 3
+# input number of piling operations to be modelled
+pilesx1 <- 1
+vulnpile <- matrix(0, nrow = nvulnmean, ncol = pilesx1)
 
-# daily_NDt - stores estimates of the number of animals of the species being modelled that may experience disturbance
-# that is likley to impair an individual's ability to survive, breed, reproduce, or raise young, or that is likely to 
-# result in that individual being displaced from an area for a longer period than normal during one day for each operation
-# 
-# For example, assume there are three piling operations, and there is a fixed number of animals that will experience PTS
-# 30 in the first piling operation, 60 in the second, and 80 in the third
-# Then that would look like: numDT <- c(30, 60, 80)
-#
-# default is 60 animals at each operation. These must be integer values
-numDT <- c(60, 60, 60)
-if (!isTRUE(all(numDT == floor(numDT)))) stop("'numDT' must only contain integer values")
+# indicate which operations will affect each vulnerable sub-population
+# in this example, there is one vulnerable sub-population that is affected by operations 1 & 2
+vulnpile[1, ] <- c(1, 1)
 
-# daily_NPt - stores estimates of the number of animals of the species being modelled that may experience 
-# a permanent shift in the threshold for hearing (PTS) during one day for each operation
-# default is 2 animals at each operation
-numPT <- c(2, 2, 2)
-if (!isTRUE(all(numPT == floor(numPT)))) stop("'numPT' must only contain integer values")
+# "seasons" determines whether or not the number of animals that are likely to be disturbed each day (NDt) 
+# and the number that may experience PTS (NPt) vary by season. seasons = 1, no seasonal variation is the default value; 
+# if seasons > 1, remember that the simulated year starts in June, for all species except GS, when it starts in October!
+# if seasons = 4, 4 there are seasons in a year. summer = June, July, August; autumn = Sept, Oct, Nov; winter = Dec, Jan, Feb; spring = March, April, May                          
+# if seasons = 2 (ie just summer and winter), we will actually require 3 breaks, assuming "summer" = May - October (ie months when water is warmest)
 
-# Residual Days of Disturbance
+seasons <- 1
+# I THINK WE MAY HAVE TO GIVE UP ON EXPLICITLY MODELLING THESE VARIATIONS WITHIN A PILING OPERATION. IT’S SIMPLER TO DIVIDE EACH PILING OPERATION INTO SEPARATE SUB-OPERATIONS FOR EACH SEASON.
+
+# input number of animals predicted to experience significant disturbance on one day of piling for each operation
+# in this example, there are two operations each of which disturbs 622 animals
+daily_NDt <- c(622,622)
+
+# now do the same for the number of animals predicted to experience PTS on one day of piling
+daily_NPt <- c(0, 0)
+
+# input number of days of "residual" disturbance. DEFAULT IS 1
 days <- 1
 
-# Determine if PTS can occur on any day, or only on the first occasion that an individual is disturbed
-# Change Day1 to TRUE if you want animals to be vulnerable to PTS only on the first day that they
-# are disturbed
+# decide if PTS can occur on any day (default) or only on the first occasion that an individual is disturbed by 
+# change Day1 to TRUE if you want animals to be only vulnerable to PTS on the first day they are disturbed
 Day1 <- FALSE
 
-# Collisions - the number of animals predicted to be killed each year as a result of collisions with tidal
-# energy arrays
-NCollisions <- 10
-
-# years - the number of years for the simulation; default is 25
-years <- 25
-
-# Set the number of times you want to run the simulation. 
-# Higher values equals less uncertainty, but longer run times
-# default is 500
-nboot <- 5#00
-
-# proportion vulnerable - Allowing a subset of disturbed animals to experience residual disturbance
+# load(file = paste(spec, piling.file, sep = ‘’))
