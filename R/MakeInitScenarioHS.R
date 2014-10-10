@@ -1,5 +1,5 @@
 # spec <- 'HS'
-propfemale <- 0.5
+
 
 # Load in the appropriate values from the results of the expert elicitation
 library(pcodData)
@@ -107,8 +107,9 @@ if(length(widx) > 0){pile <- pile[,-widx]}
 library(stringr)
 yvec   <- str_match(colnames(pile), 'Operation')
 npiles <- length(yvec[!is.na(yvec)])
-pilesx <- which(str_match(colnames(pile), 'Operation') %in% 'Operation')
+pilesx <- which(str_match(colnames(pile), 'Operation') %in% 'Operation') # remove any unwanted columns, i.e. row names that come over from excel
 pile  <- pile[, pilesx]
+pilesx <- which(str_match(colnames(pile), 'Operation') %in% 'Operation') # repeat to get the vector dimensions correct.
 
 # template for  MultPilingOpsMultYears.csv should ensure that number of rows is an exact multiple of 365
 pile_years <- nrow(pile) / 365 
@@ -193,10 +194,10 @@ pile$pvec[pile$pvec > 1] <- 1
 NDt <- matrix(0,nrow(pile), npiles, byrow = TRUE)
 NPt <- matrix(0,nrow(pile), npiles, byrow = TRUE)
                    
- for (j in 1:npiles){
+for (j in 1:npiles){
     NDt[,j]<- rep(rep(c(daily_NDt[1:seasons,j]),c(s_index[1:seasons])),pile_years)
     NPt[,j]<- rep(rep(c(daily_NPt[1:seasons,j]),c(s_index[1:seasons])),pile_years)    
-    }
+}
 
 
 
