@@ -11,7 +11,8 @@ output_juvenile <- hsoutput_juvenile
 output_dependent <- hsoutput_dependent
 
 pmean <- round(pmean*propfemale)
-Fert <- rep(0, 6); Fert[1] <- Fertility/2.0
+Fert <- rep(0, 6)
+Fert[1] <- Fertility/2.0
 
 # determine initial stable age structure for population from Leslie matrix
 
