@@ -186,15 +186,9 @@ for(i in 1:nrow(vulnpile)){
 
 # iPCoD PROTOCOL STEP 9
 
-# input number of animals predicted to be killed each year as a result of collisions with tidal energy arrays
-
-
-# NCollisions <- 0
-
 NCollisions <- NCollisions*propfemale                                                             
 
 
-#number of years for simulation
-# years <- 25
+
 
 

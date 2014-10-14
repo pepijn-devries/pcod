@@ -3,7 +3,7 @@
 # and parameters will be updated from these inputs
 rm(list = ls())
 # Set the number of times you want to run the simulation 
-nboot <- 500
+nboot <- 5#00
 
 # set species code. Here are the valid values: 
 # BND = bottlenose dolphin
@@ -22,6 +22,8 @@ if(spec == 'HPH'){minit.file <- 'MakeInitScenarioHP_high_ad_surv.R'}
 if(spec == 'HS'){minit.file <- 'MakeInitScenariosHS.R'}
 if(spec == 'MW'){minit.file <- 'MakeInitScenariosMW.R'}
 
+# Proportions of females in the population 
+propfemale <- 0.5
 
 # set threshold size for demographic stochasticity
 threshold <- 500
@@ -49,7 +51,7 @@ piling.file <- "MultPilingOpsMultYears.csv"
 pile <- read.csv(file = piling.file, header = TRUE)
 
 # input number of piling operations to be modelled
-pilesx1 <- 1
+pilesx1 <- 3
 
 # input proportion of animals in each of the vulnerable sub-population(s), default is that the entire population is vulnerable
 vulnmean <- c(1)
@@ -71,11 +73,11 @@ seasons <- 1
 # I THINK WE MAY HAVE TO GIVE UP ON EXPLICITLY MODELLING THESE VARIATIONS WITHIN A PILING OPERATION. IT’S SIMPLER TO DIVIDE EACH PILING OPERATION INTO SEPARATE SUB-OPERATIONS FOR EACH SEASON.
 
 # input number of animals predicted to experience significant disturbance on one day of piling for each operation
-# in this example, there are two operations each of which disturbs 622 animals
-numDT <- c(622,622)
+# in this example, there are three operations each of which disturbs 60 animals
+numDT <- c(60, 60, 60)
 
 # now do the same for the number of animals predicted to experience PTS on one day of piling
-numPT <- c(0, 0)
+numPT <- c(2, 2, 2)
 
 # input number of days of "residual" disturbance. DEFAULT IS 1
 days <- 1
@@ -84,3 +86,11 @@ days <- 1
 # change Day1 to TRUE if you want animals to be only vulnerable to PTS on the first day they are disturbed
 Day1 <- FALSE
 
+#number of years for simulation
+years <- 25
+
+# input number of animals predicted to be killed each year as a result of collisions with tidal energy arrays
+NCollisions <- 0
+
+# prop_dist is the proportion of disturbed animals that experience residual days of disturbance if days < 1
+prop_dist <- 1
