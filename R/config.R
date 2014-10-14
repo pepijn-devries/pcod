@@ -5,7 +5,7 @@ rm(list = ls())
 # Set the number of times you want to run the simulation 
 nboot <- 500
 
-# set species code: 
+# set species code. Here are the valid values: 
 # BND = bottlenose dolphin
 # GS = grey seal
 # HPL = harbour porpoise - low Adult survival
@@ -18,7 +18,7 @@ spec <- 'HS'
 if(spec == 'BND'){minit.file <- 'MakeInitScenariosBND.R'}
 if(spec == 'GS'){minit.file <- 'MakeInitScenariosGS.R'}
 if(spec == 'HPL'){minit.file <- 'MakeInitScenarioHP_low_ad_surv.R'}
-if(spec == 'HPA'){minit.file <- 'MakeInitScenarioHP_high_ad_surv.R'}
+if(spec == 'HPH'){minit.file <- 'MakeInitScenarioHP_high_ad_surv.R'}
 if(spec == 'HS'){minit.file <- 'MakeInitScenariosHS.R'}
 if(spec == 'MW'){minit.file <- 'MakeInitScenariosMW.R'}
 
