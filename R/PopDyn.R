@@ -1,11 +1,3 @@
-rm(list = ls())
-
-# iPCoD PROTOCOL STEP 10
-# Set the name of the MakeInit file you want to use
-
-
-
-
 # matrix to store values that will be retained from all simulations, now extended to 5 values from original 4
 dat.out <- array(NA, dim = c(years, 5, nboot)) 
 
@@ -248,6 +240,6 @@ for(boot_number in 1:nboot){
 # Decide on a name for the file that will hold the output data
 # Type this after _OutputFile in the next line
 
-save(vulnmean, days, nboot, Ndist_out_1, Ndist_out_2, dds, Surv, Fert, dat.out, file = paste(spec, '_Output_NL_Spring_622.rdata', sep = ''))
+save(vulnmean, days, nboot, Ndist_out_1, Ndist_out_2, dds, Surv, Fert, dat.out, file = paste(spec, '_Output.rdata', sep = ''))
 end <- proc.time()
 

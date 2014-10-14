@@ -1,6 +1,7 @@
 zz <- file(paste(spec, "modelParameterSummary.txt", sep = ''), "w")  
 cat('Species = ', spec , file = zz,  "\n")
-cat('# Bootstrap Iterations = ', nboot , file = zz,  "\n")
+cat('Make Init file used ', minit.file, file = zz,  "\n")
+cat('# Bootstrap Iterations = ', nboot, file = zz,  "\n")
 cat('Demographic Stochasticity Threshold', threshold, file = zz, "\n")
 cat('Population size', pmean, file = zz, "\n")
 cat('Calf/pup survival', Surv[1], file = zz, "\n")

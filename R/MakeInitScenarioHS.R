@@ -114,7 +114,7 @@ if(ncol(vulnpile) != ncol(pile)){stop('Number of Piling Operations do not match'
 # if seasons = 4, 4 there are seasons in a year. summer = June, July, August; autumn = Sept, Oct, Nov; winter = Dec, Jan, Feb; spring = March, April, May                          
 # if seasons = 2 (ie just summer and winter), we will actually require 3 breaks, assuming "summer" = May - October (ie months when water is warmest)
 
-seasons <- 1
+# seasons <- 1
 inputindex <- seasons
 if(seasons == 2) {
   seasons <- seasons + 1

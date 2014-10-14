@@ -5,8 +5,24 @@
 # Set the number of times you want to run the simulation 
 nboot <- 500
 
-# set species code (BND = bottlenose dolphin, GS = grey seal, HP = harbour porpoise, HS = harbour seal, MW = minke whale)
+# set species code: 
+# BND = bottlenose dolphin
+# GS = grey seal
+# HPL = harbour porpoise - low Adult survival
+# HPH = harbour porpoise - high Adult survival
+# HS = harbour seal
+# MW = minke whale
+
 spec <- 'HS'
+# Based on spec, set up which make init file to run
+if(spec == 'BND'){minit.file <- 'MakeInitScenariosBND.R'}
+if(spec == 'GS'){minit.file <- 'MakeInitScenariosGS.R'}
+if(spec == 'HPL'){minit.file <- 'MakeInitScenarioHP_low_ad_surv.R'}
+if(spec == 'HPA'){minit.file <- 'MakeInitScenarioHP_high_ad_surv.R'}
+if(spec == 'HS'){minit.file <- 'MakeInitScenariosHS.R'}
+if(spec == 'MW'){minit.file <- 'MakeInitScenariosMW.R'}
+
+
 # set threshold size for demographic stochasticity
 threshold <- 500
 # set population size
@@ -27,10 +43,6 @@ age2 <- 4
 # input proportion of animals in each of the vulnerable sub-population(s), default is that the entire population is vulnerable
 vulnmean <- c(1)
 
-nvulnmean <- length(vulnmean)
-newvulnmean <- vulnmean
-if(sum(vulnmean)== 1){newvulnmean <- newvulnmean} else {newvulnmean[nvulnmean+1] <- 1 - sum(newvulnmean)}
-
 # set number of years on which piling will occur. Set this to zero if there is no piling
 pile_years <- 1
 # specify name of csv file that contains information on days on which piling will occur between the quotation marks
@@ -40,7 +52,6 @@ pile <- read.csv(file = piling.file, header = TRUE)
 
 # input number of piling operations to be modelled
 pilesx1 <- 1
-vulnpile <- matrix(0, nrow = nvulnmean, ncol = pilesx1)
 
 # indicate which operations will affect each vulnerable sub-population
 # in this example, there is one vulnerable sub-population that is affected by operations 1 & 2
@@ -57,10 +68,10 @@ seasons <- 1
 
 # input number of animals predicted to experience significant disturbance on one day of piling for each operation
 # in this example, there are two operations each of which disturbs 622 animals
-daily_NDt <- c(622,622)
+numDT <- c(622,622)
 
 # now do the same for the number of animals predicted to experience PTS on one day of piling
-daily_NPt <- c(0, 0)
+numPT <- c(0, 0)
 
 # input number of days of "residual" disturbance. DEFAULT IS 1
 days <- 1
