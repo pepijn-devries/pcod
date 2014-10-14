@@ -1,16 +1,12 @@
-# spec <- 'HS'
-
-
 # Load in the appropriate values from the results of the expert elicitation
-library(pcodData)
-maturedays <- hsmaturedays
-juvedays <- hsjuvedays 
-dependentdays <- hsdependentdays
-output_mature <- hsoutput_mature
-output_juvenile <- hsoutput_juvenile
-output_dependent <- hsoutput_dependent
+load("HS_mature_Days.robj"); matureDays <- temp
+load("output_matureHS_290113.robj")
+load("HSjuve_Days.robj"); juveDays <- temp              
+load("HSdependent_Days.robj"); dependentDays <- temp    
+load("output_juvenileHS_290113.robj")                   
+load("output_dependentHS_290113.robj")  
 
-pmean <- round(pmean*propfemale)
+pmean <- round(pmean * propfemale)
 Fert <- rep(0, 6)
 Fert[1] <- Fertility/2.0
 
@@ -29,7 +25,7 @@ Fert[1] <- Fertility/2.0
   L[index2]          <- Surv[7]
   
   ev              <- eigen(L)
-  #symmetric = TRUE removed because is causes weird values!
+  
   # ev$val[1] contains growth rate of the undisturbed population
   
   evCmplx         <- ev # in case we need this later on

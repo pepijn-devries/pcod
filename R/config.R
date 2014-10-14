@@ -2,6 +2,9 @@
 # in one location. This will be sourced first during the run
 # and parameters will be updated from these inputs
 
+# Set the number of times you want to run the simulation 
+nboot <- 500
+
 # set species code (BND = bottlenose dolphin, GS = grey seal, HP = harbour porpoise, HS = harbour seal, MW = minke whale)
 spec <- 'HS'
 # set threshold size for demographic stochasticity
@@ -32,8 +35,8 @@ if(sum(vulnmean)== 1){newvulnmean <- newvulnmean} else {newvulnmean[nvulnmean+1]
 pile_years <- 1
 # specify name of csv file that contains information on days on which piling will occur between the quotation marks
 # read csv file with schedule of piling activities. 
-pile <- read.csv(file = '../data/MultPilingOpsMultYears.csv', header = TRUE) ## XXX strip out date column
-piling.file <- "../data/MultPilingOpsMultYears.csv"
+piling.file <- "MultPilingOpsMultYears.csv"
+pile <- read.csv(file = piling.file, header = TRUE)
 
 # input number of piling operations to be modelled
 pilesx1 <- 1
@@ -66,4 +69,3 @@ days <- 1
 # change Day1 to TRUE if you want animals to be only vulnerable to PTS on the first day they are disturbed
 Day1 <- FALSE
 
-# load(file = paste(spec, piling.file, sep = ‘’))
