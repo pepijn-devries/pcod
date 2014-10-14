@@ -55,7 +55,7 @@ b <- 0
  
 #   vulnmean <- c(1.0) 
 
-  nvulnmean <- length(vulnmean)
+  
 # newvulnmean includes proportion of animals in undisturbed remainder of population, if there is one!
   newvulnmean <- vulnmean
   if(sum(vulnmean)== 1){newvulnmean <- newvulnmean} else {newvulnmean[nvulnmean+1] <- 1 - sum(newvulnmean)}
@@ -90,15 +90,7 @@ yearvec <- rep(1:pile_years, each = 365)
 # pilesx1 <- 3
 
 if(pilesx1 != ncol(pile)){stop('Number of Piling Operations do not match')}
-# vulnpile is a matrix indicating which columns of pile are to be combined to provide piling information for each vulnerable sub-population
-vulnpile <- matrix(0, nrow = nvulnmean, ncol = pilesx1)
 
-# iPCoD PROTOCOL STEP 6
-
-# indicate which operations will affect each vulnerable sub-population
-# in this case there is one vulnerable sub-population that is only affected by operations 1 & 2
-
-vulnpile[1, ] <- c(1, 1, 1)
 
 # repeat this for each sub-population. 
 

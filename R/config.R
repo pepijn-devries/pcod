@@ -40,8 +40,6 @@ Fertility <- 0.95
 age1 <- 1
 #set age at which an average female gives birth to her first calf
 age2 <- 4
-# input proportion of animals in each of the vulnerable sub-population(s), default is that the entire population is vulnerable
-vulnmean <- c(1)
 
 # set number of years on which piling will occur. Set this to zero if there is no piling
 pile_years <- 1
@@ -53,9 +51,15 @@ pile <- read.csv(file = piling.file, header = TRUE)
 # input number of piling operations to be modelled
 pilesx1 <- 1
 
+# input proportion of animals in each of the vulnerable sub-population(s), default is that the entire population is vulnerable
+vulnmean <- c(1)
+nvulnmean <- length(vulnmean)
+
+# vulnpile is a matrix indicating which columns of pile are to be combined to provide piling information for each vulnerable sub-population
+vulnpile <- matrix(0, nrow = nvulnmean, ncol = pilesx1)
+
 # indicate which operations will affect each vulnerable sub-population
-# in this example, there is one vulnerable sub-population that is affected by operations 1 & 2
-vulnpile[1, ] <- c(1, 1)
+vulnpile[1, ] <- c(1)
 
 # "seasons" determines whether or not the number of animals that are likely to be disturbed each day (NDt) 
 # and the number that may experience PTS (NPt) vary by season. seasons = 1, no seasonal variation is the default value; 
