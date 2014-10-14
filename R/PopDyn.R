@@ -3,9 +3,7 @@ rm(list = ls())
 # iPCoD PROTOCOL STEP 10
 # Set the name of the MakeInit file you want to use
 
-source('PCoDFunctionsFinal.R')
-source('config.R')
-source('MakeInitScenarioHP_NL_Spring_622.r')
+
 
 
 # matrix to store values that will be retained from all simulations, now extended to 5 values from original 4
