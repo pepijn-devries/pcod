@@ -1,7 +1,7 @@
 # config.R - to allow users to set all relevant parameters
 # in one location. This will be sourced first during the run
 # and parameters will be updated from these inputs
-
+rm(list = ls())
 # Set the number of times you want to run the simulation 
 nboot <- 500
 
