@@ -240,6 +240,7 @@ for(boot_number in 1:nboot){
 # Decide on a name for the file that will hold the output data
 # Type this after _OutputFile in the next line
 
-save(vulnmean, days, nboot, Ndist_out_1, Ndist_out_2, dds, Surv, Fert, dat.out, file = paste(spec, '_Output.rdata', sep = ''))
+save(vulnmean, days, nboot, Ndist_out_1, Ndist_out_2, dds, Surv, Fert, dat.out, 
+     file = paste(spec, runID, '_Output_', Sys.time(), '.rdata', sep = ''))
 end <- proc.time()
 
