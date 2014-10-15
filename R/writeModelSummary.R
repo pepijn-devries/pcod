@@ -1,4 +1,4 @@
-zz <- file(paste(spec, "modelParameterSummary.txt", sep = ''), "w")  
+zz <- file(paste(spec, runID, "_modelParameterSummary_", Sys.time(), '.txt', sep = ''), "w")  
 cat('Species = ', spec , file = zz,  "\n")
 cat('Make Init file used = ', minit.file, file = zz,  "\n")
 cat('Number Bootstrap Iterations = ', nboot, file = zz,  "\n")

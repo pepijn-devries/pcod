@@ -2,6 +2,9 @@
 # in one location. This will be sourced first during the run
 # and parameters will be updated from these inputs
 rm(list = ls())
+
+# Set a unique ID for this run that can be used to name the output files:
+runID <- 1
 # Set the number of times you want to run the simulation 
 nboot <- 5#00
 
