@@ -73,10 +73,10 @@ for(boot_number in 1:nboot){
     
     for (j in 1:(nvulnmean)) { 
       for(k in 1:nrow(p_disturb))  {
-        p_disturb[k, j] <- ifelse( sum((pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, j]) / (vulnmean[j] * pmean)) > 1.0, 1.0, 
-                                   sum((pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, j]) / (vulnmean[j] * pmean))) 
+        p_disturb[k, j] <- ifelse( sum((pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx]) / (vulnmean[j] * pmean)) > 1.0, 1.0, 
+                                   sum((pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx]) / (vulnmean[j] * pmean))) 
         
-        p_pts[k, j]     <- sum(pile[k, pilesx] * vulnpile[j, pilesx] * NPtvar[k, j]) / sum(pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, j])
+        p_pts[k, j]     <- sum(pile[k, pilesx] * vulnpile[j, pilesx] * NPtvar[k, pilesx) / sum(pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx])
       }
     }
     
