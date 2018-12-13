@@ -76,7 +76,7 @@ for(boot_number in 1:nboot){
         p_disturb[k, j] <- ifelse( sum((pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx]) / (vulnmean[j] * pmean)) > 1.0, 1.0, 
                                    sum((pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx]) / (vulnmean[j] * pmean))) 
         
-        p_pts[k, j]     <- sum(pile[k, pilesx] * vulnpile[j, pilesx] * NPtvar[k, pilesx) / sum(pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx])
+        p_pts[k, j]     <- sum(pile[k, pilesx] * vulnpile[j, pilesx] * NPtvar[k, pilesx]) / sum(pile[k, pilesx] * vulnpile[j, pilesx] * NDtvar[k, pilesx])
       }
     }
     
